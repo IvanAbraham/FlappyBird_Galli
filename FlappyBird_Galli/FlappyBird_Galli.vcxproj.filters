@@ -5,17 +5,29 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Game">
+    <Filter Include="Screens">
+      <UniqueIdentifier>{b87866ac-4ab1-4c82-8510-e3c9933e19e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Game">
       <UniqueIdentifier>{237da0e6-759b-4c21-9311-eebd60c8d9a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Obstacles">
+    <Filter Include="Screens\Game\Obstacles">
       <UniqueIdentifier>{54ab40bc-6d25-4083-945a-b7322b432bd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Logic">
+    <Filter Include="Screens\Game\Logic">
       <UniqueIdentifier>{a1f7471b-f308-441b-9db2-90acdfda1cac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Player">
+    <Filter Include="Screens\Game\Player">
       <UniqueIdentifier>{525a9473-424b-493c-a0ae-6ee2afb3ff6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Menu">
+      <UniqueIdentifier>{b5800269-2918-4e9e-95cd-d527c2a5c660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Credits">
+      <UniqueIdentifier>{a66c3c61-eafe-4648-8e06-10b114504df9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Program">
+      <UniqueIdentifier>{0f70ad8e-510e-457d-a77b-8f292385d338}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,30 +35,48 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Game.cpp">
-      <Filter>Game</Filter>
+      <Filter>Screens\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\collisions.cpp">
-      <Filter>Game\Logic</Filter>
+      <Filter>Screens\Game\Logic</Filter>
     </ClCompile>
     <ClCompile Include="src\Obstacle.cpp">
-      <Filter>Game\Obstacles</Filter>
+      <Filter>Screens\Game\Obstacles</Filter>
     </ClCompile>
     <ClCompile Include="src\Player.cpp">
-      <Filter>Game\Player</Filter>
+      <Filter>Screens\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Screens\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Screens\Credits</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Screens\Program</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\collisions.h">
-      <Filter>Game\Logic</Filter>
+      <Filter>Screens\Game\Logic</Filter>
     </ClInclude>
     <ClInclude Include="src\Obstacle.h">
-      <Filter>Game\Obstacles</Filter>
+      <Filter>Screens\Game\Obstacles</Filter>
     </ClInclude>
     <ClInclude Include="src\Game.h">
-      <Filter>Game</Filter>
+      <Filter>Screens\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\Player.h">
-      <Filter>Game\Player</Filter>
+      <Filter>Screens\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Screens\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Screens\Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Screens\Program</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Credits.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="src\collisions.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -26,6 +29,9 @@
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Credits.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Program.h" />
     <ClInclude Include="src\collisions.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Obstacle.h" />

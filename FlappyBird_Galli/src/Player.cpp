@@ -1,22 +1,23 @@
 #include "Player.h"
 
-void PlayerMovement(Vector2& playerPos, int playerSize, float speed)
+void PlayerMovement(Vector2& playerPos,float& acceleration, float speed)
 {
 
     playerPos.x = 200;
     
-    if (IsKeyDown('w') || IsKeyDown('W'))
-    {   
-        if (playerPos.y  >= 0)
-        {
-            playerPos.y -= 1 * GetFrameTime() * speed;
-        }
-    }
-    if (IsKeyDown('s') || IsKeyDown('S'))
+    if (acceleration < 2)
     {
-        if (playerPos.y + playerSize <= screenHeight)
-        {
-            playerPos.y += 1 * GetFrameTime() * speed;
-        }
+        acceleration += 0.005f;
+    }
+    playerPos.y += GetFrameTime() * acceleration * speed;
+
+    if (playerPos.y < 0)
+    {
+        playerPos.y += 1;
+    }
+
+    if (IsKeyPressed('w') || IsKeyPressed('W'))
+    {   
+        acceleration = -5;
     }
 }
