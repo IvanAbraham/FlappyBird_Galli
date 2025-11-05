@@ -4,30 +4,31 @@
 #include "Collisions.h"
 
 
-int Start()
+int Game()
 {
-    srand((unsigned int)time(nullptr));
 
     Vector2 playerPos = { 0 };
     float playerSize = 40;
 
-    Vector2 obstaclePos = { 0 };
+    Vector2 obstaclePos[2] = { {0} };
 
+    float acceleration = 0;
     float speed = 200.0f;
-
-    InitWindow(screenWidth, screenHeight, "Flappy Bird");
 
 
     while (!WindowShouldClose())
     {
-        PlayerMovement(playerPos, playerSize, speed);
+        PlayerMovement(playerPos, acceleration, speed);
 
         ObstacleMovement(obstaclePos, speed);
 
-        if (rectToRect(playerPos,{playerSize,playerSize},obstaclePos,{40,screenHeight}))
+        if (rectToRect(playerPos,{playerSize,playerSize},obstaclePos[0], {40,screenHeight}) || 
+            rectToRect(playerPos, { playerSize,playerSize }, obstaclePos[1], { 40,screenHeight }) ||
+            playerPos.y + playerSize >= screenHeight)
         {
             playerPos.y = 0;
-            obstaclePos.x = 0 - 40;
+            obstaclePos[0].x = 0 - 40;
+            obstaclePos[1].x = 0 - 40;
         }
 
         BeginDrawing();
@@ -36,9 +37,10 @@ int Start()
 
         DrawRectangleV(playerPos, { 40,40 }, BLACK);
 
-        DrawRectangleV(obstaclePos, { 40,screenHeight }, BLACK);
+        DrawRectangleV(obstaclePos[0], {40,screenHeight}, BLACK);
+        DrawRectangleV(obstaclePos[1], {40,screenHeight}, BLACK);
 
-        DrawText("0.1", 5, 5, 10, BLACK);
+        DrawText("0.2", 5, 5, 10, BLACK);
 
         EndDrawing();
     }

@@ -1,12 +1,15 @@
 #include "Obstacle.h"
 
-void ObstacleMovement(Vector2& obstaclePos, float speed)
+void ObstacleMovement(Vector2 obstaclePos[], float speed)
 {
-    obstaclePos.x -= 1 * GetFrameTime() * speed;
+    obstaclePos[0].x -= 1 * GetFrameTime() * speed;
+    obstaclePos[1].x -= 1 * GetFrameTime() * speed;
 
-    if (obstaclePos.x < 0 - 40)
+    if (obstaclePos[0].x < 0 - 40)
     {
-        obstaclePos.x = screenWidth;
-        obstaclePos.y = (rand() % (screenHeight - 100)) + 100;
+        obstaclePos[0].x = screenWidth;
+        obstaclePos[1].x = screenWidth;
+        obstaclePos[0].y = (rand() % (screenHeight - 100)) + 100;
+        obstaclePos[1].y = (obstaclePos[0].y - screenHeight) - 150;
     }
 }
