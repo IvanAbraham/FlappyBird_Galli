@@ -2,32 +2,35 @@
 #include "Menu.h"
 #include "Credits.h"
 
-int Start()
+namespace program
 {
-    srand((unsigned int)time(nullptr));
-
-	Screens actualScreen = Screens::Game;
-
-    InitWindow(screenWidth, screenHeight, "Flappy Bird");
-
-    while (!WindowShouldClose())
+    int Start()
     {
-        switch (actualScreen)
-        {
-        case Screens::Menu:
-            Menu::Update();
-            break;
-        case Screens::Game:
-            Game::Update();
-            break;
-        case Screens::Credits:
-            Credits::Update();
-            break;
-        default:
-            break;
-        }
-    }
+        srand((unsigned int)time(nullptr));
 
-    CloseWindow();
-    return 0;
+        Screens actualScreen = Screens::Game;
+
+        InitWindow(screenWidth, screenHeight, "Flappy Bird");
+
+        while (!WindowShouldClose())
+        {
+            switch (actualScreen)
+            {
+            case program::Screens::Menu:
+                Menu::Update(actualScreen);
+                break;
+            case program::Screens::Game:
+                Game::Update(actualScreen);
+                break;
+            case program::Screens::Credits:
+                //Credits::Update(actualScreen);
+                break;
+            default:
+                break;
+            }
+        }
+
+        CloseWindow();
+        return 0;
+    }
 }

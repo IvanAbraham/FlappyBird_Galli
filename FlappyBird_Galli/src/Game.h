@@ -8,5 +8,5 @@ namespace Game
 {
 	static float speed = 200.0f;
 
-	void Update();
+	void Update(program::Screens& actualScreen);
 }

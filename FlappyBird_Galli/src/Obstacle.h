@@ -5,7 +5,7 @@ namespace obstacle
 	struct Obstacle
 	{
 		Vector2 position{ 0 };
-		Vector2 size = { 40,screenHeight };
+		Vector2 size = { 40,(float)program::screenHeight };
 	};
 	void Movement(Obstacle obstacle[2]);
 }

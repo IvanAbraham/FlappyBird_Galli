@@ -3,5 +3,5 @@
 
 namespace Menu
 {
-	int Update();
+	int Update(program::Screens& actualScreen);
 }

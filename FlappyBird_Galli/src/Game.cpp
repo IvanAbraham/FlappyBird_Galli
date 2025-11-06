@@ -1,6 +1,6 @@
 #include "Game.h"
 
-void Game::Update()
+void Game::Update(program::Screens& actualScreen)
 {
     static player::Player player;
     static obstacle::Obstacle obstacle[2];
@@ -9,9 +9,9 @@ void Game::Update()
 
     obstacle::Movement(obstacle);
 
-    if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,screenHeight }) ||
-        col::rectToRect(player.position, player.size, obstacle[1].position, { 40,screenHeight }) ||
-        player.position.y + player.size.y >= screenHeight)
+    if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+        col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
+        player.position.y + player.size.y >= program::screenHeight)
     {
         player.position.y = 0;
         obstacle[0].position.x = 0 - 40;
@@ -24,8 +24,8 @@ void Game::Update()
 
     DrawRectangleV(player.position, player.size, BLACK);
 
-    DrawRectangleV(obstacle[0].position, { 40,screenHeight }, BLACK);
-    DrawRectangleV(obstacle[1].position, { 40,screenHeight }, BLACK);
+    DrawRectangleV(obstacle[0].position, { 40,(float)program::screenHeight }, BLACK);
+    DrawRectangleV(obstacle[1].position, { 40,(float)program::screenHeight }, BLACK);
 
     DrawText("0.2", 5, 5, 10, BLACK);
 

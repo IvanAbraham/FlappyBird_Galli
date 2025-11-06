@@ -2,6 +2,6 @@
 
 int main()
 {
-	Start();
+	program::Start();
 	return 0;
 }

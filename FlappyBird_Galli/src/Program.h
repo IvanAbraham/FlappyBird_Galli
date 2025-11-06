@@ -3,14 +3,18 @@
 #include "raylib.h"
 #include <ctime>
 
-const int screenWidth = 800;
-const int screenHeight = 450;
-
-enum class Screens
+namespace program
 {
-	Menu,
-	Game,
-	Credits
-};
 
-int Start();
+	const int screenWidth = 800;
+	const int screenHeight = 450;
+
+	enum class Screens
+	{
+		Menu,
+		Game,
+		Credits
+	};
+
+	int Start();
+}
