@@ -11,13 +11,16 @@ void Game::Update(program::Screens& actualScreen)
 
     if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
         col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
-        player.position.y + player.size.y >= program::screenHeight)
+        player.position.y + player.size.y >= program::screenHeight )
     {
         player.position.y = 0;
         obstacle[0].position.x = 0 - 40;
         obstacle[1].position.x = 0 - 40;
     }
-
+    if (IsKeyPressed(KEY_ESCAPE))
+    {
+        actualScreen = program::Screens::Menu;
+    }
 
     BeginDrawing();
 

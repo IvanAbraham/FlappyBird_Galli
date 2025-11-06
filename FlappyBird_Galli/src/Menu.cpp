@@ -37,9 +37,13 @@ namespace Menu
 		{
 			actualScreen = program::Screens::Game;
 		}
+		if (creditsButton.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			actualScreen = program::Screens::Credits;
+		}
 
 		BeginDrawing();
-
+		ClearBackground(BLACK);
 		buttonDraw(playButton);
 		buttonDraw(creditsButton);
 

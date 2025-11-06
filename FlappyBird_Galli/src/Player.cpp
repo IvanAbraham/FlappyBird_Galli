@@ -17,7 +17,7 @@ namespace player
             player.position.y += 1;
         }
 
-        if (IsKeyPressed('w') || IsKeyPressed('W'))
+        if (IsKeyPressed('w') || IsKeyPressed('W') || IsKeyPressed(KEY_SPACE))
         {
             player.acceleration = -5;
         }

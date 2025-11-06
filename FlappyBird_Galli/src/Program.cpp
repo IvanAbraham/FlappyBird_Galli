@@ -7,6 +7,7 @@ namespace program
 {
     int Start()
     {
+
         srand((unsigned int)time(nullptr));
 
         Screens actualScreen = Screens::Menu;
@@ -18,13 +19,16 @@ namespace program
             switch (actualScreen)
             {
             case program::Screens::Menu:
+                SetExitKey(KEY_ESCAPE);
                 Menu::Update(actualScreen);
                 break;
             case program::Screens::Game:
+                SetExitKey(KEY_NULL);
                 Game::Update(actualScreen);
                 break;
             case program::Screens::Credits:
-                //Credits::Update(actualScreen);
+                SetExitKey(KEY_NULL);
+                Credits::Update(actualScreen);
                 break;
             default:
                 break;
