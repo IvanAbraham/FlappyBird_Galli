@@ -1,50 +1,33 @@
 #include "Game.h"
-#include "Player.h"
-#include "Obstacle.h"
-#include "Collisions.h"
 
-
-int Game()
+void Game::Update()
 {
+    static player::Player player;
+    static obstacle::Obstacle obstacle[2];
 
-    Vector2 playerPos = { 0 };
-    float playerSize = 40;
+    player::Movement(player);
 
-    Vector2 obstaclePos[2] = { {0} };
+    obstacle::Movement(obstacle);
 
-    float acceleration = 0;
-    float speed = 200.0f;
-
-
-    while (!WindowShouldClose())
+    if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,screenHeight }) ||
+        col::rectToRect(player.position, player.size, obstacle[1].position, { 40,screenHeight }) ||
+        player.position.y + player.size.y >= screenHeight)
     {
-        PlayerMovement(playerPos, acceleration, speed);
-
-        ObstacleMovement(obstaclePos, speed);
-
-        if (rectToRect(playerPos,{playerSize,playerSize},obstaclePos[0], {40,screenHeight}) || 
-            rectToRect(playerPos, { playerSize,playerSize }, obstaclePos[1], { 40,screenHeight }) ||
-            playerPos.y + playerSize >= screenHeight)
-        {
-            playerPos.y = 0;
-            obstaclePos[0].x = 0 - 40;
-            obstaclePos[1].x = 0 - 40;
-        }
-
-        BeginDrawing();
-
-        ClearBackground(RAYWHITE);
-
-        DrawRectangleV(playerPos, { 40,40 }, BLACK);
-
-        DrawRectangleV(obstaclePos[0], {40,screenHeight}, BLACK);
-        DrawRectangleV(obstaclePos[1], {40,screenHeight}, BLACK);
-
-        DrawText("0.2", 5, 5, 10, BLACK);
-
-        EndDrawing();
+        player.position.y = 0;
+        obstacle[0].position.x = 0 - 40;
+        obstacle[1].position.x = 0 - 40;
     }
 
-    CloseWindow();
-    return 0;
+    BeginDrawing();
+
+    ClearBackground(RAYWHITE);
+
+    DrawRectangleV(player.position, player.size, BLACK);
+
+    DrawRectangleV(obstacle[0].position, { 40,screenHeight }, BLACK);
+    DrawRectangleV(obstacle[1].position, { 40,screenHeight }, BLACK);
+
+    DrawText("0.2", 5, 5, 10, BLACK);
+
+    EndDrawing();
 }

@@ -46,14 +46,14 @@
     <ClCompile Include="src\Player.cpp">
       <Filter>Screens\Game\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="src\Menu.cpp">
       <Filter>Screens\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Credits.cpp">
-      <Filter>Screens\Credits</Filter>
-    </ClCompile>
-    <ClCompile Include="Program.cpp">
+    <ClCompile Include="src\Program.cpp">
       <Filter>Screens\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Credits.cpp">
+      <Filter>Screens\Credits</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,14 +69,14 @@
     <ClInclude Include="src\Player.h">
       <Filter>Screens\Game\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="src\Menu.h">
       <Filter>Screens\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Credits.h">
-      <Filter>Screens\Credits</Filter>
-    </ClInclude>
-    <ClInclude Include="Program.h">
+    <ClInclude Include="src\Program.h">
       <Filter>Screens\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Credits.h">
+      <Filter>Screens\Credits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

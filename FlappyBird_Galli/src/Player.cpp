@@ -1,23 +1,25 @@
 #include "Player.h"
 
-void PlayerMovement(Vector2& playerPos,float& acceleration, float speed)
+namespace player
 {
-
-    playerPos.x = 200;
-    
-    if (acceleration < 2)
+    void player::Movement(Player& player)
     {
-        acceleration += 0.005f;
-    }
-    playerPos.y += GetFrameTime() * acceleration * speed;
+        player.position.x = 200;
 
-    if (playerPos.y < 0)
-    {
-        playerPos.y += 1;
-    }
+        if (player.acceleration < 2)
+        {
+            player.acceleration += 0.005f;
+        }
+        player.position.y += GetFrameTime() * player.acceleration * Game::speed;
 
-    if (IsKeyPressed('w') || IsKeyPressed('W'))
-    {   
-        acceleration = -5;
+        if (player.position.y < 0)
+        {
+            player.position.y += 1;
+        }
+
+        if (IsKeyPressed('w') || IsKeyPressed('W'))
+        {
+            player.acceleration = -5;
+        }
     }
 }

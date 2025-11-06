@@ -1,11 +1,12 @@
-#include "Program.h"
-#include "../src/Game.h"
+#include "Game.h"
+#include "Menu.h"
+#include "Credits.h"
 
 int Start()
 {
     srand((unsigned int)time(nullptr));
 
-	Screens actualScreen = Screens::Menu;
+	Screens actualScreen = Screens::Game;
 
     InitWindow(screenWidth, screenHeight, "Flappy Bird");
 
@@ -14,11 +15,13 @@ int Start()
         switch (actualScreen)
         {
         case Screens::Menu:
+            Menu::Update();
             break;
         case Screens::Game:
-            Game();
+            Game::Update();
             break;
         case Screens::Credits:
+            Credits::Update();
             break;
         default:
             break;

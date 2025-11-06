@@ -1,4 +1,11 @@
 #pragma once
 #include "Game.h"
-
-void ObstacleMovement(Vector2 obstaclePos[], float speed);
+namespace obstacle
+{
+	struct Obstacle
+	{
+		Vector2 position{ 0 };
+		Vector2 size = { 40,screenHeight };
+	};
+	void Movement(Obstacle obstacle[2]);
+}
