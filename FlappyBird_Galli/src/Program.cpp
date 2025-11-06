@@ -1,6 +1,7 @@
-#include "Game.h"
+#include "Program.h"
 #include "Menu.h"
 #include "Credits.h"
+#include "Game.h"
 
 namespace program
 {
@@ -8,7 +9,7 @@ namespace program
     {
         srand((unsigned int)time(nullptr));
 
-        Screens actualScreen = Screens::Game;
+        Screens actualScreen = Screens::Menu;
 
         InitWindow(screenWidth, screenHeight, "Flappy Bird");
 

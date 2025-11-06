@@ -18,6 +18,7 @@ void Game::Update(program::Screens& actualScreen)
         obstacle[1].position.x = 0 - 40;
     }
 
+
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
