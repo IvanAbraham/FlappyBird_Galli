@@ -46,6 +46,8 @@ namespace Menu
 		ClearBackground(BLACK);
 		buttonDraw(playButton);
 		buttonDraw(creditsButton);
+		DrawText("Play", playButton.Position.x + 20, playButton.Position.y, 20, BLACK);
+		DrawText("Credits", creditsButton.Position.x + 20, creditsButton.Position.y, 20, BLACK);
 
 		EndDrawing();
 		
