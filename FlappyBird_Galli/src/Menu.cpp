@@ -2,7 +2,7 @@
 
 namespace Menu
 {
-	static void buttonLogic(Menu::Button& button)
+	static void buttonLogic(program::Button& button)
 	{
 		if (col::pointToRect(GetMousePosition(),button.Position,button.Size))
 		{
@@ -10,7 +10,7 @@ namespace Menu
 		}
 	}
 
-	static void buttonDraw(Menu::Button& button)
+	static void buttonDraw(program::Button& button)
 	{
 		if (button.isHovering)
 		{
@@ -24,8 +24,8 @@ namespace Menu
 
 	int Update(program::Screens& actualScreen)
 	{
-		Menu::Button playButton;
-		Menu::Button creditsButton;
+		program::Button playButton;
+		program::Button creditsButton;
 
 		playButton.Position = { program::screenWidth * 0.4, program::screenHeight * 0.6 };
 		creditsButton.Position = { program::screenWidth * 0.4, program::screenHeight * 0.75 };

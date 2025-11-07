@@ -5,7 +5,7 @@ namespace Game
     { 
         DrawRectangleV({ scrollingBack,0 }, { program::screenWidth,program::screenHeight }, GRAY);
         DrawRectangleV({ scrollingMid,program::screenHeight * 0.3 }, { program::screenWidth,program::screenHeight }, DARKGRAY);
-        DrawRectangleV({ scrollingFore,program::screenHeight * 0.5 }, { program::screenWidth,program::screenHeight }, WHITE);
+        DrawRectangleV({ scrollingFore,program::screenHeight * 0.5 }, { program::screenWidth,program::screenHeight }, RED);
     }
 
     void Game::Update(program::Screens& actualScreen)
@@ -16,9 +16,9 @@ namespace Game
         static float scrollingMid = 0.0f;
         static float scrollingFore = 0.0f;
 
-        scrollingBack -= 2.0f * GetFrameTime();
-        scrollingMid -= 6.0f * GetFrameTime();
-        scrollingFore -= 10.0f * GetFrameTime();
+        scrollingBack -= 5.0f * GetFrameTime();
+        scrollingMid -= 20.0f * GetFrameTime();
+        scrollingFore -= 40.0f * GetFrameTime();
 
         if (scrollingBack <= -program::screenWidth)
         {

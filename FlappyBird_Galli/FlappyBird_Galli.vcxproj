@@ -91,11 +91,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin/$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin/$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)obj/$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin/$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin/$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)obj/$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,6 +111,15 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <RootFolder>
+      </RootFolder>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>"$(SolutionDir)scripts\copy.bat" "$(SolutionDir)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -131,6 +140,15 @@
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <RootFolder>
+      </RootFolder>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>"$(SolutionDir)scripts\copy.bat" "$(SolutionDir)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
