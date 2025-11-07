@@ -48,6 +48,9 @@ namespace Game
         if (IsKeyPressed(KEY_ESCAPE))
         {
             actualScreen = program::Screens::Menu;
+            player.position.y = 0;
+            obstacle[0].position.x = 0 - 40;
+            obstacle[1].position.x = 0 - 40;
         }
 
         BeginDrawing();
