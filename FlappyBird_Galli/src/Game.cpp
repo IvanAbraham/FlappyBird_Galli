@@ -1,6 +1,13 @@
 #include "Game.h"
 namespace Game
 {
+    static void DrawBackGround(float& scrollingBack, float& scrollingMid, float& scrollingFore)
+    { 
+        DrawRectangleV({ scrollingBack,0 }, { program::screenWidth,program::screenHeight }, GRAY);
+        DrawRectangleV({ scrollingMid,program::screenHeight * 0.3 }, { program::screenWidth,program::screenHeight }, DARKGRAY);
+        DrawRectangleV({ scrollingFore,program::screenHeight * 0.5 }, { program::screenWidth,program::screenHeight }, WHITE);
+    }
+
     void Game::Update(program::Screens& actualScreen)
     {
         static player::Player player;
@@ -8,6 +15,23 @@ namespace Game
         static float scrollingBack = 0.0f;
         static float scrollingMid = 0.0f;
         static float scrollingFore = 0.0f;
+
+        scrollingBack -= 2.0f * GetFrameTime();
+        scrollingMid -= 6.0f * GetFrameTime();
+        scrollingFore -= 10.0f * GetFrameTime();
+
+        if (scrollingBack <= -program::screenWidth)
+        {
+            scrollingBack = 0;
+        }
+        if (scrollingMid <= -program::screenWidth)
+        {
+            scrollingMid = 0;
+        }
+        if (scrollingFore <= -program::screenWidth)
+        {
+            scrollingFore = 0;
+        }
 
         player::Movement(player);
 
@@ -28,7 +52,9 @@ namespace Game
 
         BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        ClearBackground(WHITE);
+
+        DrawBackGround(scrollingBack, scrollingMid, scrollingFore);
 
         DrawRectangleV(player.position, player.size, BLACK);
 
