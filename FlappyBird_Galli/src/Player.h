@@ -11,4 +11,6 @@ namespace player
 	};
 
 	void Movement(Player& player);
+
+	void MovmentP2(Player& player);
 }

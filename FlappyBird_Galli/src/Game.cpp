@@ -1,6 +1,9 @@
 #include "Game.h"
 namespace Game
 {
+
+    bool twoPlayers = false;
+
     static void DrawBackGround(float& scrollingBack, float& scrollingMid, float& scrollingFore)
     { 
         DrawRectangleV({ scrollingBack,0 }, { program::screenWidth,program::screenHeight }, GRAY);
@@ -11,7 +14,10 @@ namespace Game
     void Game::Update(program::Screens& actualScreen)
     {
         static player::Player player;
+        static player::Player player2;
+
         static obstacle::Obstacle obstacle[2];
+
         static float scrollingBack = 0.0f;
         static float scrollingMid = 0.0f;
         static float scrollingFore = 0.0f;
@@ -34,6 +40,13 @@ namespace Game
         }
 
         player::Movement(player);
+
+        if (twoPlayers)
+        {
+
+            player::MovmentP2(player2);
+       
+        }
 
         obstacle::Movement(obstacle);
 
@@ -60,6 +73,13 @@ namespace Game
         DrawBackGround(scrollingBack, scrollingMid, scrollingFore);
 
         DrawRectangleV(player.position, player.size, BLACK);
+
+        if (twoPlayers)
+        {
+
+            DrawRectangleV(player2.position, player2.size, WHITE);
+        
+        }
 
         DrawRectangleV(obstacle[0].position, { 40,(float)program::screenHeight }, BLACK);
         DrawRectangleV(obstacle[1].position, { 40,(float)program::screenHeight }, BLACK);
