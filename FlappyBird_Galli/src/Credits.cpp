@@ -37,8 +37,8 @@ namespace Credits
 		{
 			DrawRectangleV(backButton.Position,backButton.Size,WHITE);
 		}
-		DrawText("Lucas Galli", (double)program::screenWidth * 0.2, (double)program::screenHeight * 0.5, (double)program::screenWidth * 0.1, WHITE);
-		DrawText("0.3", program::screenWidth-20, 5, 10, WHITE);
+		DrawText("FlappyBird - Abraham", static_cast<int>(program::screenWidth * 0.2f), static_cast<int>(program::screenHeight * 0.5f), static_cast<int>(program::screenWidth * 0.1f), WHITE);
+		DrawText("0.3", program::screenWidth - 20, 5, 10, WHITE);
 		EndDrawing();
 		return 0;
 	}

@@ -6,8 +6,8 @@
 namespace program
 {
 
-	const double screenWidth = 800;
-	const double screenHeight = 450;
+	const int screenWidth = 800;
+	const int screenHeight = 450;
 
 	enum class Screens
 	{

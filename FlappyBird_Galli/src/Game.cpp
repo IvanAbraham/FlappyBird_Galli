@@ -3,6 +3,7 @@ namespace Game
 {
 
     bool twoPlayers = false;
+    bool gameOver = false;
 
     static void DrawBackGround(float& scrollingBack, float& scrollingMid, float& scrollingFore)
     { 
@@ -73,7 +74,7 @@ namespace Game
 
         }
 
-        else if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+        else if (!twoPlayers && col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
             col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
             player.position.y + player.size.y >= program::screenHeight)
         {
@@ -94,7 +95,7 @@ namespace Game
 
         }
 
-        else if (!player.isAlive)
+        else if (!twoPlayers && !player.isAlive)
         {
 
             gameOver = true;
@@ -104,19 +105,33 @@ namespace Game
         if (gameOver)
         {
 
-            actualScreen = program::Screens::Menu;
             player.position.y = 0;
+            player2.position.y = 0;
+
             obstacle[0].position.x = 0 - 40;
             obstacle[1].position.x = 0 - 40;
+            
+            gameOver = false;
+            player.isAlive = true;
+            player2.isAlive = true;
+            
+            actualScreen = program::Screens::Menu;
 
         }
         
         if (IsKeyPressed(KEY_ESCAPE))
         {
-            actualScreen = program::Screens::Menu;
             player.position.y = 0;
+            player2.position.y = 0;
+
             obstacle[0].position.x = 0 - 40;
             obstacle[1].position.x = 0 - 40;
+
+            gameOver = false;
+            player.isAlive = true;
+            player2.isAlive = true;
+
+            actualScreen = program::Screens::Menu;
         }
 
         BeginDrawing();
