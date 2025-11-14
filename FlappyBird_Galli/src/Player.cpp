@@ -10,6 +10,7 @@ namespace player
         {
             player.acceleration += 4.2f * GetFrameTime();
         }
+        
         player.position.y += GetFrameTime() * player.acceleration * Game::speed;
 
         if (player.position.y <= 0 && player.acceleration < 0)
@@ -30,6 +31,7 @@ namespace player
         {
             player.acceleration += 4.2f * GetFrameTime();
         }
+        
         player.position.y += GetFrameTime() * player.acceleration * Game::speed;
 
         if (player.position.y <= 0 && player.acceleration < 0)

@@ -66,7 +66,7 @@ namespace Menu
 		DrawText("Play", static_cast<int>(playButton.Position.x) + 20, static_cast<int>(playButton.Position.y), 20, BLACK);
 		DrawText("Two Players", static_cast<int>(twoPlayers.Position.x) + 20, static_cast<int>(twoPlayers.Position.y), 20, BLACK);
 		DrawText("Credits", static_cast<int>(creditsButton.Position.x) + 20, static_cast<int>(creditsButton.Position.y), 20, BLACK);
-		DrawText("0.3", 5, 5, 10, WHITE);
+		DrawText("0.4", 5, 5, 10, RED);
 		EndDrawing();
 		
 		return 0;
