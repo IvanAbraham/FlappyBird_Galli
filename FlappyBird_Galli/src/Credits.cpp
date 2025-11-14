@@ -37,7 +37,7 @@ namespace Credits
 		{
 			DrawRectangleV(backButton.Position,backButton.Size,WHITE);
 		}
-		DrawText("Lucas Galli", (float)program::screenWidth * 0.2, (float)program::screenHeight * 0.5, (float)program::screenWidth * 0.1, WHITE);
+		DrawText("Lucas Galli", (double)program::screenWidth * 0.2, (double)program::screenHeight * 0.5, (double)program::screenWidth * 0.1, WHITE);
 		DrawText("0.3", program::screenWidth-20, 5, 10, WHITE);
 		EndDrawing();
 		return 0;

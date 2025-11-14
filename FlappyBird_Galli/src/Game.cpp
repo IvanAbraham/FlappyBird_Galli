@@ -50,14 +50,67 @@ namespace Game
 
         obstacle::Movement(obstacle);
 
-        if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+        if (twoPlayers)
+        {
+
+            if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+                col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
+                player.position.y + player.size.y >= program::screenHeight)
+            {
+                
+                player.isAlive = false;
+
+            }
+
+            if (col::rectToRect(player2.position, player2.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+                col::rectToRect(player2.position, player2.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
+                player2.position.y + player2.size.y >= program::screenHeight)
+            {
+
+                player2.isAlive = false;
+
+            }
+
+        }
+
+        else if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
             col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
             player.position.y + player.size.y >= program::screenHeight)
         {
+            
+            player.isAlive = false;
+
+        }
+
+        if (twoPlayers)
+        {
+
+            if (!player.isAlive && !player2.isAlive)
+            {
+
+                gameOver = true;
+
+            }
+
+        }
+
+        else if (!player.isAlive)
+        {
+
+            gameOver = true;
+
+        }
+
+        if (gameOver)
+        {
+
+            actualScreen = program::Screens::Menu;
             player.position.y = 0;
             obstacle[0].position.x = 0 - 40;
             obstacle[1].position.x = 0 - 40;
+
         }
+        
         if (IsKeyPressed(KEY_ESCAPE))
         {
             actualScreen = program::Screens::Menu;

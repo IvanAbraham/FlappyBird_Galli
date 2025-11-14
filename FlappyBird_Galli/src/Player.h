@@ -8,6 +8,7 @@ namespace player
 		Vector2 position{ 0 };
 		Vector2 size = { 40,40 };
 		float acceleration = 0;
+		bool isAlive;
 	};
 
 	void Movement(Player& player);

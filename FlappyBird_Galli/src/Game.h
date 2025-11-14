@@ -8,5 +8,6 @@ namespace Game
 {
 	static float speed = 200.0f;
 	void Update(program::Screens& actualScreen);
+	bool gameOver;
 	extern bool twoPlayers;
 }

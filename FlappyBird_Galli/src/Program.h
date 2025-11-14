@@ -6,8 +6,8 @@
 namespace program
 {
 
-	const int screenWidth = 800;
-	const int screenHeight = 450;
+	const double screenWidth = 800;
+	const double screenHeight = 450;
 
 	enum class Screens
 	{
@@ -18,7 +18,7 @@ namespace program
 
 	struct Button
 	{
-		Vector2 Position = {0,0};
+		Vector2 Position = {0, 0};
 		Vector2 Size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
 		bool isHovering = false;
 	};
