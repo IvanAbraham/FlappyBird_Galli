@@ -189,7 +189,12 @@ namespace Game
 
             ClearBackground(LIGHTGRAY);
 
-            DrawText("GAME OVER", static_cast<int>(program::screenWidth * 0.5), static_cast<int>(program::screenHeight * 0.5), static_cast<int>(program::screenHeight * 0.05), RED);
+            program::Button gameOverTxt;
+
+            gameOverTxt.text = "GAME OVER\n press R to retry.\n press ESC to go back to menu";
+            gameOverTxt.textLength = static_cast<float>(MeasureText(gameOverTxt.text, static_cast<int>(gameOverTxt.fontSize)));
+
+            DrawText(gameOverTxt.text, static_cast<int>(program::screenWidth * 0.5) - static_cast<int>(gameOverTxt.textLength / 2), static_cast<int>(program::screenHeight * 0.5), static_cast<int>(program::screenHeight * 0.05), RED);
         }
 
         if (isPaused)
@@ -217,8 +222,8 @@ namespace Game
 
             }
 
-            DrawRectangleV(obstacle[0].position, { 40,(float)program::screenHeight }, BLACK);
-            DrawRectangleV(obstacle[1].position, { 40,(float)program::screenHeight }, BLACK);
+            DrawRectangleV(obstacle[0].position, { obstacle->size.x, obstacle->size.y}, BLACK);
+            DrawRectangleV(obstacle[1].position, { obstacle->size.x, obstacle->size.y}, BLACK);
 
             DrawText("0.4", 5, 5, 10, RED);
 

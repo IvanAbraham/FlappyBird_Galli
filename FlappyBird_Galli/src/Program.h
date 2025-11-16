@@ -6,8 +6,8 @@
 namespace program
 {
 
-	const int screenWidth = 800;
-	const int screenHeight = 450;
+	const int screenWidth = 1280;
+	const int screenHeight = 720;
 
 	enum class Screens
 	{
@@ -18,9 +18,15 @@ namespace program
 
 	struct Button
 	{
-		Vector2 Position = {0, 0};
-		Vector2 Size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
+		Vector2 position = {0, 0};
+		Vector2 size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
+		
+		const char* text;
+		const float fontSize = static_cast<float>(program::screenHeight * 0.06);
+		float textLength;
+
 		bool isHovering = false;
+
 	};
 
 	int Start();

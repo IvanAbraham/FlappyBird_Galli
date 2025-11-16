@@ -4,7 +4,7 @@ namespace Menu
 {
 	static void buttonLogic(program::Button& button)
 	{
-		if (col::pointToRect(GetMousePosition(),button.Position,button.Size))
+		if (col::pointToRect(GetMousePosition(),button.position,button.size))
 		{
 			button.isHovering = true;
 		}
@@ -14,11 +14,11 @@ namespace Menu
 	{
 		if (button.isHovering)
 		{
-			DrawRectangleV(button.Position, button.Size, GRAY);
+			DrawRectangleV(button.position, button.size, GRAY);
 		}
 		else
 		{
-			DrawRectangleV(button.Position, button.Size, WHITE);
+			DrawRectangleV(button.position, button.size, WHITE);
 		}
 	}
 
@@ -28,9 +28,17 @@ namespace Menu
 		program::Button twoPlayers;
 		program::Button creditsButton;
 
-		playButton.Position = { program::screenWidth * 0.4, program::screenHeight * 0.4 };
-		twoPlayers.Position = { program::screenWidth * 0.4, playButton.Position.y + twoPlayers.Size.y + 10 };
-		creditsButton.Position = { program::screenWidth * 0.4, twoPlayers.Position.y + creditsButton.Size.y + 10 };
+		playButton.position = { program::screenWidth * 0.4, program::screenHeight * 0.4 };
+		playButton.text = "Play";
+		playButton.textLength = static_cast<float>(MeasureText(playButton.text, static_cast<int>(playButton.fontSize)));
+
+		twoPlayers.position = { program::screenWidth * 0.4, playButton.position.y + twoPlayers.size.y + 10 };
+		twoPlayers.text = "Two Players";
+		twoPlayers.textLength = static_cast<float>(MeasureText(twoPlayers.text, static_cast<int>(twoPlayers.fontSize)));
+
+		creditsButton.position = { program::screenWidth * 0.4, twoPlayers.position.y + creditsButton.size.y + 10 };
+		creditsButton.text = "Credits";
+		creditsButton.textLength = static_cast<float>(MeasureText(creditsButton.text, static_cast<int>(creditsButton.fontSize)));
 
 		buttonLogic(playButton);
 		buttonLogic(twoPlayers);
@@ -58,15 +66,19 @@ namespace Menu
 		}
 
 		BeginDrawing();
+		
 		ClearBackground(BLACK);
+		
 		buttonDraw(playButton);
 		buttonDraw(twoPlayers);
 		buttonDraw(creditsButton);
 
-		DrawText("Play", static_cast<int>(playButton.Position.x) + 20, static_cast<int>(playButton.Position.y), 20, BLACK);
-		DrawText("Two Players", static_cast<int>(twoPlayers.Position.x) + 20, static_cast<int>(twoPlayers.Position.y), 20, BLACK);
-		DrawText("Credits", static_cast<int>(creditsButton.Position.x) + 20, static_cast<int>(creditsButton.Position.y), 20, BLACK);
+		DrawText(playButton.text, static_cast<int>(playButton.position.x) + static_cast<int>(playButton.textLength / 2), static_cast<int>(playButton.position.y) + static_cast<int>(playButton.fontSize / 2), static_cast<int>(playButton.fontSize), BLACK);
+		DrawText(twoPlayers.text, static_cast<int>(twoPlayers.position.x), static_cast<int>(twoPlayers.position.y) + static_cast<int>(twoPlayers.fontSize / 2), static_cast<int>(twoPlayers.fontSize), BLACK);
+		DrawText(creditsButton.text, static_cast<int>(creditsButton.position.x) + static_cast<int>(creditsButton.textLength / 2), static_cast<int>(creditsButton.position.y) + static_cast<int>(creditsButton.fontSize / 2), static_cast<int>(creditsButton.fontSize), BLACK);
+		
 		DrawText("0.4", 5, 5, 10, RED);
+		
 		EndDrawing();
 		
 		return 0;
