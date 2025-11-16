@@ -18,7 +18,6 @@ namespace Credits
 		backButton.textLength = static_cast<float>(MeasureText(backButton.text, static_cast<int>(backButton.fontSize)));
 		backButton.size = { backButton.textLength + 5, 50 };
 
-
 		if (IsKeyPressed(KEY_ESCAPE))
 		{
 			actualScreen = program::Screens::Menu;
@@ -52,8 +51,6 @@ namespace Credits
 		
 		DrawText(ogAuthorTxt, static_cast<int>(program::screenWidth * 0.1), static_cast<int>(program::screenHeight * 0.3), static_cast<int>(fontSize), WHITE);
 		DrawText(upAuthorTxt, static_cast<int>(program::screenWidth * 0.1), static_cast<int>(program::screenHeight * 0.3 + fontSize + gap), static_cast<int>(fontSize), WHITE);
-		
-		DrawText("0.4", program::screenWidth-20, 5, 1, WHITE);
 		
 		EndDrawing();
 		

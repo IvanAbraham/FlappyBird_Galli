@@ -27,6 +27,7 @@
     <ClCompile Include="src\Obstacle.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Program.cpp" />
+    <ClCompile Include="src\Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\collisions.h" />
@@ -36,6 +37,7 @@
     <ClInclude Include="src\Obstacle.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Program.h" />
+    <ClInclude Include="src\Tutorial.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

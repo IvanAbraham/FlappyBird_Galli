@@ -237,8 +237,6 @@ namespace Game
             DrawRectangleV(obstacle[0].position, { obstacle->size.x, obstacle->size.y}, BLACK);
             DrawRectangleV(obstacle[1].position, { obstacle->size.x, obstacle->size.y}, BLACK);
 
-            DrawText("0.4", 5, 5, 10, RED);
-
         }
 
         EndDrawing();

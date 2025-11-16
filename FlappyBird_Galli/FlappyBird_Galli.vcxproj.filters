@@ -29,6 +29,9 @@
     <Filter Include="Screens\Program">
       <UniqueIdentifier>{0f70ad8e-510e-457d-a77b-8f292385d338}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Game\Tutorial">
+      <UniqueIdentifier>{6adfdc1e-f0e3-406f-acb3-17de9fe7d85b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -55,6 +58,9 @@
     <ClCompile Include="src\Credits.cpp">
       <Filter>Screens\Credits</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tutorial.cpp">
+      <Filter>Screens\Game\Tutorial</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\collisions.h">
@@ -77,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="src\Credits.h">
       <Filter>Screens\Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tutorial.h">
+      <Filter>Screens\Game\Tutorial</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

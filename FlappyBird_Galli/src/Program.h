@@ -13,7 +13,8 @@ namespace program
 	{
 		Menu,
 		Game,
-		Credits
+		Credits,
+		Tutorial
 	};
 
 	struct Button
@@ -22,7 +23,7 @@ namespace program
 		Vector2 size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
 		
 		const char* text;
-		const float fontSize = static_cast<float>(program::screenHeight * 0.06);
+		float fontSize = static_cast<float>(program::screenHeight * 0.06);
 		float textLength;
 
 		bool isHovering = false;

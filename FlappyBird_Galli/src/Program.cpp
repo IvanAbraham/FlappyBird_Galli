@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Credits.h"
 #include "Game.h"
+#include "Tutorial.h"
 
 namespace program
 {
@@ -25,6 +26,10 @@ namespace program
             case program::Screens::Game:
                 SetExitKey(KEY_NULL);
                 Game::Update(actualScreen);
+                break;
+            case program::Screens::Tutorial:
+                SetExitKey(KEY_NULL);
+                Tutorial::Update(actualScreen);
                 break;
             case program::Screens::Credits:
                 SetExitKey(KEY_NULL);
