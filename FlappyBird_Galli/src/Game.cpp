@@ -67,6 +67,8 @@ namespace Game
 
                     player.isAlive = false;
 
+                    player.position.y = program::screenHeight * 2;
+
                 }
 
                 if (col::rectToRect(player2.position, player2.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
@@ -76,16 +78,26 @@ namespace Game
 
                     player2.isAlive = false;
 
+                    player2.position.y = program::screenHeight * 2;
+
                 }
 
             }
 
-            else if (!twoPlayers && col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
-                col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
-                player.position.y + player.size.y >= program::screenHeight)
+            else if (!twoPlayers)
             {
 
-                player.isAlive = false;
+                if (col::rectToRect(player.position, player.size, obstacle[0].position, { 40,(float)program::screenHeight }) ||
+                    col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
+                    player.position.y + player.size.y >= program::screenHeight)
+                {
+
+                    player.isAlive = false;
+
+                    player.position.y = program::screenHeight * 2;
+
+                }
+                   
 
             }
 
