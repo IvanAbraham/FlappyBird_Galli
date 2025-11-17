@@ -2,6 +2,9 @@
 
 namespace Menu
 {
+	Texture2D background = LoadTexture("res/Textures/MainMenu/Menu1.jpg");
+	Vector2 backgroundPos = { 0.0f, 0.0f };
+
 	static void buttonLogic(program::Button& button)
 	{
 		if (col::pointToRect(GetMousePosition(),button.position,button.size))
@@ -80,8 +83,8 @@ namespace Menu
 
 		BeginDrawing();
 		
-		ClearBackground(BLACK);
-		
+		DrawTextureEx(background, backgroundPos, 0.0f, 1.0f, WHITE);
+
 		buttonDraw(playButton);
 		buttonDraw(twoPlayers);
 		buttonDraw(tutorial);
@@ -96,6 +99,8 @@ namespace Menu
 		
 		EndDrawing();
 		
+		UnloadTexture(background);
+
 		return 0;
 	}
 }

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="src\collisions.cpp" />
     <ClCompile Include="src\Credits.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="src\Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="src\collisions.h" />
     <ClInclude Include="src\Credits.h" />
     <ClInclude Include="src\Game.h" />

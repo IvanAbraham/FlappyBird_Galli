@@ -61,6 +61,9 @@
     <ClCompile Include="src\Tutorial.cpp">
       <Filter>Screens\Game\Tutorial</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Screens\Program</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\collisions.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="src\Tutorial.h">
       <Filter>Screens\Game\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Screens\Program</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
