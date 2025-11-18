@@ -1,16 +1,20 @@
 #include "Menu.h"
 
 namespace Menu
-{
-	Texture2D background = LoadTexture("res/Textures/MainMenu/Menu1.jpg");
-	Vector2 backgroundPos = { 0.0f, 0.0f };
-
+{	
 	static void buttonLogic(program::Button& button)
 	{
 		if (col::pointToRect(GetMousePosition(),button.position,button.size))
 		{
 			button.isHovering = true;
 		}
+		else
+		{
+
+			button.isHovering = false;
+
+		}
+
 	}
 
 	static void buttonDraw(program::Button& button)
@@ -25,43 +29,50 @@ namespace Menu
 		}
 	}
 
-	int Update(program::Screens& actualScreen)
+	void Init(Menu::Buttons& buttons, Menu::textureMenu& background)
+	{	
+
+		buttons.playButton.position = { 10, program::screenHeight * 0.55f };
+		buttons.playButton.text = "Play";
+		buttons.playButton.textLength = static_cast<float>(MeasureText(buttons.playButton.text, static_cast<int>(buttons.playButton.fontSize)));
+
+		buttons.twoPlayers.position = { buttons.playButton.position.x, buttons.playButton.position.y + buttons.twoPlayers.size.y + 10 };
+		buttons.twoPlayers.text = "Two Players";
+		buttons.twoPlayers.textLength = static_cast<float>(MeasureText(buttons.twoPlayers.text, static_cast<int>(buttons.twoPlayers.fontSize)));
+
+		buttons.tutorial.position = { buttons.playButton.position.x, buttons.twoPlayers.position.y + buttons.creditsButton.size.y + 10 };
+		buttons.tutorial.text = "Tutorial";
+		buttons.tutorial.textLength = static_cast<float>(MeasureText(buttons.tutorial.text, static_cast<int>(buttons.tutorial.fontSize)));
+
+		buttons.creditsButton.position = { buttons.playButton.position.x, buttons.tutorial.position.y + buttons.tutorial.size.y + 10 };
+		buttons.creditsButton.text = "Credits";
+		buttons.creditsButton.textLength = static_cast<float>(MeasureText(buttons.creditsButton.text, static_cast<int>(buttons.creditsButton.fontSize)));
+
+		background.texture = LoadTexture("res/Textures/MainMenu/Menu1.png");
+		background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
+		background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
+		background.origin = { 0, 0 };
+	}
+
+	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons)
 	{
-		program::Button playButton;
-		program::Button twoPlayers;
-		program::Button tutorial;
-		program::Button creditsButton;
 
-		playButton.position = { 10, program::screenHeight * 0.4 };
-		playButton.text = "Play";
-		playButton.textLength = static_cast<float>(MeasureText(playButton.text, static_cast<int>(playButton.fontSize)));
+		buttonLogic(buttons.playButton);
+		buttonLogic(buttons.twoPlayers);
+		buttonLogic(buttons.tutorial);
+		buttonLogic(buttons.creditsButton);
 
-		twoPlayers.position = { playButton.position.x, playButton.position.y + twoPlayers.size.y + 10 };
-		twoPlayers.text = "Two Players";
-		twoPlayers.textLength = static_cast<float>(MeasureText(twoPlayers.text, static_cast<int>(twoPlayers.fontSize)));
-
-		tutorial.position = { playButton.position.x, twoPlayers.position.y + creditsButton.size.y + 10 };
-		tutorial.text = "Tutorial";
-		tutorial.textLength = static_cast<float>(MeasureText(tutorial.text, static_cast<int>(tutorial.fontSize)));
-
-		creditsButton.position = { playButton.position.x, tutorial.position.y + tutorial.size.y + 10 };
-		creditsButton.text = "Credits";
-		creditsButton.textLength = static_cast<float>(MeasureText(creditsButton.text, static_cast<int>(creditsButton.fontSize)));
-
-		buttonLogic(playButton);
-		buttonLogic(twoPlayers);
-		buttonLogic(tutorial);
-		buttonLogic(creditsButton);
-
-		if (playButton.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (buttons.playButton.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 		
 			actualScreen = program::Screens::Game;
 			Game::twoPlayers = false;
+
+			
 		
 		}
 
-		if (twoPlayers.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (buttons.twoPlayers.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 
 			actualScreen = program::Screens::Game;
@@ -69,38 +80,35 @@ namespace Menu
 
 		}
 
-		if (tutorial.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (buttons.tutorial.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 
 			actualScreen = program::Screens::Tutorial;
 
 		}
 
-		if (creditsButton.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (buttons.creditsButton.isHovering && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			actualScreen = program::Screens::Credits;
 		}
 
 		BeginDrawing();
 		
-		DrawTextureEx(background, backgroundPos, 0.0f, 1.0f, WHITE);
+		DrawTexturePro(background.texture, background.source, background.dest, background.origin, 0.0f, WHITE);
 
-		buttonDraw(playButton);
-		buttonDraw(twoPlayers);
-		buttonDraw(tutorial);
-		buttonDraw(creditsButton);
+		buttonDraw(buttons.playButton);
+		buttonDraw(buttons.twoPlayers);
+		buttonDraw(buttons.tutorial);
+		buttonDraw(buttons.creditsButton);
 
-		DrawText(playButton.text, static_cast<int>(playButton.position.x), static_cast<int>(playButton.position.y + playButton.fontSize / 2), static_cast<int>(playButton.fontSize), BLACK);
-		DrawText(twoPlayers.text, static_cast<int>(twoPlayers.position.x), static_cast<int>(twoPlayers.position.y + twoPlayers.fontSize / 2), static_cast<int>(twoPlayers.fontSize), BLACK);
-		DrawText(tutorial.text, static_cast<int>(tutorial.position.x), static_cast<int>(tutorial.position.y + tutorial.fontSize / 2), static_cast<int>(tutorial.fontSize), BLACK);
-		DrawText(creditsButton.text, static_cast<int>(creditsButton.position.x), static_cast<int>(creditsButton.position.y + creditsButton.fontSize / 2), static_cast<int>(creditsButton.fontSize), BLACK);
+		DrawText(buttons.playButton.text, static_cast<int>(buttons.playButton.position.x), static_cast<int>(buttons.playButton.position.y + buttons.playButton.fontSize / 2), static_cast<int>(buttons.playButton.fontSize), BLACK);
+		DrawText(buttons.twoPlayers.text, static_cast<int>(buttons.twoPlayers.position.x), static_cast<int>(buttons.twoPlayers.position.y + buttons.twoPlayers.fontSize / 2), static_cast<int>(buttons.twoPlayers.fontSize), BLACK);
+		DrawText(buttons.tutorial.text, static_cast<int>(buttons.tutorial.position.x), static_cast<int>(buttons.tutorial.position.y + buttons.tutorial.fontSize / 2), static_cast<int>(buttons.tutorial.fontSize), BLACK);
+		DrawText(buttons.creditsButton.text, static_cast<int>(buttons.creditsButton.position.x), static_cast<int>(buttons.creditsButton.position.y + buttons.creditsButton.fontSize / 2), static_cast<int>(buttons.creditsButton.fontSize), BLACK);
 		
 		DrawText("0.4", 5, 5, static_cast<int>(program::screenHeight * 0.06), RED);
 		
 		EndDrawing();
-		
-		UnloadTexture(background);
 
-		return 0;
 	}
 }

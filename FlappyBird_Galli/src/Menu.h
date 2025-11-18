@@ -6,6 +6,24 @@
 
 namespace Menu
 {
+	struct Buttons
+	{
+		program::Button playButton;
+		program::Button twoPlayers;
+		program::Button tutorial;
+		program::Button creditsButton;
+	};
+	
+	struct textureMenu
+	{
 
-	int Update(program::Screens& actualScreen);
+		Texture2D texture;
+		Rectangle source;
+		Rectangle dest;
+		Vector2 origin;
+
+	};
+
+	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons);
+	void Init(Menu::Buttons& buttons, Menu::textureMenu& background);
 }

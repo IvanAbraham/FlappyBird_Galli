@@ -13,29 +13,44 @@ namespace program
 
         Screens actualScreen = Screens::Menu;
 
-        InitWindow(screenWidth, screenHeight, "Flappy Bird");
+        Menu::Buttons menuButtons;
+        Menu::textureMenu menuTexture;
+
+        InitWindow(screenWidth, screenHeight, "Flappy Bird");  
+
+        Menu::Init(menuButtons, menuTexture);
 
         while (!WindowShouldClose())
         {
             switch (actualScreen)
             {
             case program::Screens::Menu:
-                SetExitKey(KEY_ESCAPE);
-                Menu::Update(actualScreen);
+                
+                Menu::Update(actualScreen, menuTexture, menuButtons);
+                
                 break;
+            
             case program::Screens::Game:
-                SetExitKey(KEY_NULL);
+               
                 Game::Update(actualScreen);
                 break;
+            
             case program::Screens::Tutorial:
+            
                 SetExitKey(KEY_NULL);
                 Tutorial::Update(actualScreen);
+                
                 break;
+            
             case program::Screens::Credits:
+            
                 SetExitKey(KEY_NULL);
                 Credits::Update(actualScreen);
+                
                 break;
+            
             default:
+            
                 break;
             }
         }

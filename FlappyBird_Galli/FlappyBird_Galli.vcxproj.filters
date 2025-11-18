@@ -84,14 +84,14 @@
     <ClInclude Include="src\Program.h">
       <Filter>Screens\Program</Filter>
     </ClInclude>
-    <ClInclude Include="src\Credits.h">
-      <Filter>Screens\Credits</Filter>
-    </ClInclude>
     <ClInclude Include="src\Tutorial.h">
       <Filter>Screens\Game\Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Screens\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Credits.h">
+      <Filter>Screens\Credits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

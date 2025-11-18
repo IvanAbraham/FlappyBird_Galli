@@ -11,5 +11,15 @@ namespace Credits
 		bool isHovering = false;
 	};
 
+	struct textureCredits
+	{
+
+		Texture2D texture;
+		Rectangle source;
+		Rectangle dest;
+		Vector2 origin;
+
+	};
+
 	int Update(program::Screens& actualScreen);
 }
