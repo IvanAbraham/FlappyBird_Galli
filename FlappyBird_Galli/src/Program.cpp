@@ -16,9 +16,14 @@ namespace program
         Menu::Buttons menuButtons;
         Menu::textureMenu menuTexture;
 
+        Credits::textureCredits creditsTexture;
+        
+        Button backButton;
+
         InitWindow(screenWidth, screenHeight, "Flappy Bird");  
 
         Menu::Init(menuButtons, menuTexture);
+        Credits::Init(backButton, creditsTexture);
 
         while (!WindowShouldClose())
         {
@@ -45,7 +50,7 @@ namespace program
             case program::Screens::Credits:
             
                 SetExitKey(KEY_NULL);
-                Credits::Update(actualScreen);
+                Credits::Update(actualScreen, creditsTexture, backButton);
                 
                 break;
             

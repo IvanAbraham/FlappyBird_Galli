@@ -4,12 +4,6 @@
 
 namespace Credits
 {
-	struct Button
-	{
-		Vector2 Position;
-		Vector2 Size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
-		bool isHovering = false;
-	};
 
 	struct textureCredits
 	{
@@ -21,5 +15,7 @@ namespace Credits
 
 	};
 
-	int Update(program::Screens& actualScreen);
+	int Update(program::Screens& actualScreen, textureCredits& background, program::Button backButton);
+
+	void Init(program::Button& backButton, Credits::textureCredits& background);
 }

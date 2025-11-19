@@ -3,21 +3,22 @@
 namespace Credits
 {
 
-	int Update(program::Screens& actualScreen)
+	void Init(program::Button& backButton, Credits::textureCredits& background)
 	{
 
-		const char* ogAuthorTxt = "Original author: Lucas Galli";
-		const char* upAuthorTxt = "Ver 0.4 forward author: Ivan Abraham";
-
-		const float fontSize = static_cast<float>(program::screenHeight * 0.06);
-		const float gap = program::screenHeight * 0.1;
-
-		program::Button backButton;
-
 		backButton.position = { 5,5 };
-		backButton.text = "Back";
-		backButton.textLength = static_cast<float>(MeasureText(backButton.text, static_cast<int>(backButton.fontSize)));
+		backButton.textLength = static_cast<float>(program::screenWidth / 6), static_cast<int>(program::screenHeight / 6);
 		backButton.size = { backButton.textLength + 5, 50 };
+
+		background.texture = LoadTexture("res/Textures/Credits/Credits1.png");
+		background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
+		background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
+		background.origin = { 0, 0 };
+
+	}
+
+	int Update(program::Screens& actualScreen, textureCredits& background, program::Button backButton)
+	{
 
 		if (IsKeyPressed(KEY_ESCAPE))
 		{
@@ -37,8 +38,9 @@ namespace Credits
 		}
 
 		BeginDrawing();
-		ClearBackground(BLACK);
 		
+		DrawTexturePro(background.texture, background.source, background.dest, background.origin, 0.0f, WHITE);
+
 		if (backButton.isHovering)
 		{
 			DrawRectangleV(backButton.position, backButton.size, GRAY);
@@ -47,11 +49,6 @@ namespace Credits
 		{
 			DrawRectangleV(backButton.position,backButton.size,WHITE);
 		}
-
-		DrawText(backButton.text, static_cast<int>(backButton.position.x), static_cast<int>(backButton.position.y), static_cast<int>(fontSize), BLACK);
-		
-		DrawText(ogAuthorTxt, static_cast<int>(program::screenWidth * 0.1), static_cast<int>(program::screenHeight * 0.3), static_cast<int>(fontSize), WHITE);
-		DrawText(upAuthorTxt, static_cast<int>(program::screenWidth * 0.1), static_cast<int>(program::screenHeight * 0.3 + fontSize + gap), static_cast<int>(fontSize), WHITE);
 		
 		EndDrawing();
 		
