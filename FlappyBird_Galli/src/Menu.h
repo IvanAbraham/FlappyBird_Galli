@@ -12,6 +12,7 @@ namespace Menu
 		program::Button twoPlayers;
 		program::Button tutorial;
 		program::Button creditsButton;
+		program::Button quitButton;
 	};
 	
 	struct textureMenu
@@ -24,6 +25,7 @@ namespace Menu
 
 	};
 
-	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons);
+	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons, bool& isPlaying);
 	void Init(Menu::Buttons& buttons, Menu::textureMenu& background);
+
 }

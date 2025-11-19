@@ -19,6 +19,8 @@ namespace program
 
 	struct Button
 	{
+		Texture2D texture;
+		Texture2D hovTexture;
 		Vector2 position = {0, 0};
 		Vector2 size = { program::screenWidth * 0.2, program::screenHeight * 0.1 };
 		
@@ -31,4 +33,6 @@ namespace program
 	};
 
 	int Start();
+
+	
 }

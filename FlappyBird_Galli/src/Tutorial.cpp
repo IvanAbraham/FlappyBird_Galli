@@ -18,7 +18,7 @@ namespace Tutorial
 
 		if (IsKeyPressed(KEY_ESCAPE))
 			currentScreen = program::Screens::Menu;
-		
+
 		if (col::pointToRect(GetMousePosition(), backButton.position, backButton.size))
 		{
 			backButton.isHovering = true;
@@ -27,16 +27,21 @@ namespace Tutorial
 				currentScreen = program::Screens::Menu;
 			}
 		}
+		else
+		{
+			backButton.isHovering = false;
+		}
 
 		BeginDrawing();
-		
+
 		DrawTexturePro(background.texture, background.source, background.dest, background.origin, 0.0f, WHITE);
 
 		if (backButton.isHovering)
-			DrawRectangleV(backButton.position, backButton.size, GRAY);
-
+			DrawTexture(backButton.hovTexture, static_cast<int>(backButton.position.x), static_cast<int>(backButton.position.y), WHITE);
 		else
-			DrawRectangleV(backButton.position, backButton.size, WHITE);
+		{		
+			DrawTexture(backButton.texture, static_cast<int>(backButton.position.x), static_cast<int>(backButton.position.y), WHITE);
+		}
 
 		EndDrawing();
 

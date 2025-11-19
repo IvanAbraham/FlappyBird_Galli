@@ -15,5 +15,5 @@ namespace Credits
 
 	int Update(program::Screens& actualScreen, textureCredits& background, program::Button backButton);
 
-	void Init(program::Button backButton, textureCredits& background);
+	void Init(textureCredits& background);
 }
