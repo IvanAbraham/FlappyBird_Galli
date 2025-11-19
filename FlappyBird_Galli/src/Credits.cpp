@@ -3,7 +3,7 @@
 namespace Credits
 {
 
-	void Init(program::Button& backButton, Credits::textureCredits& background)
+	void Init(program::Button backButton, textureCredits& background)
 	{
 
 		backButton.position = { 5,5 };
@@ -17,13 +17,9 @@ namespace Credits
 
 	}
 
-	int Update(program::Screens& actualScreen, textureCredits& background, program::Button backButton)
+	int Update(program::Screens& actualScreen, Credits::textureCredits& background, program::Button backButton)
 	{
 
-		if (IsKeyPressed(KEY_ESCAPE))
-		{
-			actualScreen = program::Screens::Menu;
-		}
 		if (col::pointToRect(GetMousePosition(),backButton.position,backButton.size))
 		{
 			backButton.isHovering = true;
