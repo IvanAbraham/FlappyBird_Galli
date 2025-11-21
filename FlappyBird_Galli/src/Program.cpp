@@ -23,6 +23,7 @@ namespace program
         Button backButton;
 
         InitWindow(screenWidth, screenHeight, "Flappy Bird");  
+        InitAudioDevice();
 
         backButton.textLength = static_cast<float>(program::screenWidth / 6), static_cast<int>(program::screenHeight / 6);
         backButton.size = { backButton.textLength + 5, 50 };
@@ -43,7 +44,6 @@ namespace program
             case program::Screens::Menu:
 
                 Menu::Init(menuButtons, menuTexture, isInitiated);
-                
                 Menu::Update(actualScreen, menuTexture, menuButtons, isPlaying, isInitiated);
                 
                 break;

@@ -29,6 +29,7 @@ namespace program
 		float textLength;
 
 		bool isHovering = false;
+		bool wasHovering = false;
 
 	};
 

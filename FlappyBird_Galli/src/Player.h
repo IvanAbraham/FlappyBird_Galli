@@ -11,7 +11,7 @@ namespace player
 		bool isAlive = true;
 	};
 
-	void Movement(Player& player);
+	void Movement(Player& player, Sound jump);
 
-	void MovmentP2(Player& player);
+	void MovmentP2(Player& player, Sound jump);
 }

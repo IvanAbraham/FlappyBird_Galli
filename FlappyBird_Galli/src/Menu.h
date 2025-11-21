@@ -13,6 +13,8 @@ namespace Menu
 		program::Button tutorial;
 		program::Button creditsButton;
 		program::Button quitButton;
+		Sound hoverSound;
+		Sound selectSound;
 	};
 	
 	struct textureMenu

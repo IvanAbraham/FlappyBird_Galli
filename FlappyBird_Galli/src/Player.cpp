@@ -2,7 +2,7 @@
 
 namespace player
 {
-    void player::Movement(Player& player)
+    void player::Movement(Player& player, Sound jump)
     {
         player.position.x = 200;
 
@@ -21,10 +21,12 @@ namespace player
         if (IsKeyPressed('w') || IsKeyPressed('W') || IsKeyPressed(KEY_SPACE))
         {
             player.acceleration = -2.0;
+
+            PlaySound(jump);
         }
     }
 
-    void player::MovmentP2(Player& player)
+    void player::MovmentP2(Player& player, Sound jump)
     {
 
         player.position.x = 150;
@@ -44,6 +46,8 @@ namespace player
         if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_DOWN))
         {
             player.acceleration = -2.0;
+
+            PlaySound(jump);
         }
 
     }

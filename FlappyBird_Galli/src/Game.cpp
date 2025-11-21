@@ -28,7 +28,14 @@
         static Texture2D building;
         static Texture2D city;
 
+        Sound jump;
+        Sound fall;
+        Sound death;
+
+        Music gameMusic;
+
         static bool texturesLoaded = false;
+        static bool soundLoaded = false;
 
         static void LoadGameTextures()
         {
@@ -49,6 +56,18 @@
             texturesLoaded = true;
         }
 
+        static void LoadGameAudio()
+        {
+            jump = LoadSound("res/Sfx/Jump.mp3");
+            fall = LoadSound("res/Sfx/wilhelmscream.mp3");
+            death = LoadSound("res/Sfx/Boom.mp3");
+
+            gameMusic = LoadMusicStream("res/Music/inspiring-motivation-synthwave-398285.mp3");
+            PlayMusicStream(gameMusic);
+
+            soundLoaded = true;
+        }
+
         void UnloadGameTextures()
         {
             if (texturesLoaded)
@@ -65,6 +84,17 @@
 
                 texturesLoaded = false;
             }
+        }
+
+        void UnloadSound()
+        {
+            UnloadSound(jump);
+            UnloadSound(fall);
+            UnloadSound(death);
+
+            UnloadMusicStream(gameMusic);
+
+            soundLoaded = false;
         }
 
         static void DrawBackGround()
@@ -151,7 +181,6 @@
 
             positionsInitialized = true;
         }
-        
 
         static void DrawPause()
         {
@@ -179,10 +208,17 @@
                 LoadGameTextures();
             }
 
+            if (!soundLoaded)
+            {
+                LoadGameAudio();
+            }
+
             if (!positionsInitialized)
             {
                 InitBgPositions();
             }
+
+            UpdateMusicStream(gameMusic);
 
             static player::Player player;
             static player::Player player2;
@@ -195,12 +231,12 @@
             if (!gameOver && !isPaused)
             {
 
-                player::Movement(player);
+                player::Movement(player, jump);
 
                 if (twoPlayers)
                 {
 
-                    player::MovmentP2(player2);
+                    player::MovmentP2(player2, jump);
 
                 }
 
@@ -213,10 +249,17 @@
                         col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
                         player.position.y + player.size.y >= program::screenHeight)
                     {
+                        if (player.position.y + player.size.y >= program::screenHeight)
+                        {
+                            PlaySound(fall);
+                        }
+                        else
+                        {
+                            PlaySound(death);
+                        }
 
                         player.isAlive = false;
 
-                        player.position.y = program::screenHeight * 2;
 
                     }
 
@@ -225,9 +268,17 @@
                         player2.position.y + player2.size.y >= program::screenHeight)
                     {
 
+                        if (player2.position.y + player2.size.y >= program::screenHeight)
+                        {
+                            PlaySound(fall);
+                        }
+                        else
+                        {
+                            PlaySound(death);
+                        }
+
                         player2.isAlive = false;
 
-                        player2.position.y = program::screenHeight * 2;
 
                     }
 
@@ -240,10 +291,16 @@
                         col::rectToRect(player.position, player.size, obstacle[1].position, { 40,(float)program::screenHeight }) ||
                         player.position.y + player.size.y >= program::screenHeight)
                     {
+                        if (player.position.y + player.size.y >= program::screenHeight)
+                        {
+                            PlaySound(fall);
+                        }
+                        else
+                        {
+                            PlaySound(death);
+                        }
 
                         player.isAlive = false;
-
-                        player.position.y = program::screenHeight * 2;
 
                     }
                    

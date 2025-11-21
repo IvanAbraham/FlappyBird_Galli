@@ -50,7 +50,9 @@ namespace Tutorial
 		DrawTexturePro(background.texture, background.source, background.dest, background.origin, 0.0f, WHITE);
 
 		if (backButton.isHovering)
+		{	
 			DrawTexture(backButton.hovTexture, static_cast<int>(backButton.position.x), static_cast<int>(backButton.position.y), WHITE);
+		}
 		else
 		{		
 			DrawTexture(backButton.texture, static_cast<int>(backButton.position.x), static_cast<int>(backButton.position.y), WHITE);
