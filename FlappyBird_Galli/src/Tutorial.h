@@ -14,8 +14,8 @@ namespace Tutorial
 		Vector2 origin;
 	};
 
-	void Init(textureTutorial& background);
+	void Init(Tutorial::textureTutorial& background, bool& initiated);
 
-	void Update(program::Screens& currentScreen, program::Button& backButton, textureTutorial& background);
+	void Update(program::Screens& currentScreen, program::Button& backButton, Tutorial::textureTutorial& background, bool& initiated);
 
 }

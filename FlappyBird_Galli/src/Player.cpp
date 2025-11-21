@@ -27,6 +27,8 @@ namespace player
     void player::MovmentP2(Player& player)
     {
 
+        player.position.x = 150;
+
         if (player.acceleration < 3)
         {
             player.acceleration += 4.2f * GetFrameTime();

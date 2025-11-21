@@ -25,7 +25,6 @@ namespace Menu
 
 	};
 
-	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons, bool& isPlaying);
-	void Init(Menu::Buttons& buttons, Menu::textureMenu& background);
-
+	void Update(program::Screens& actualScreen, textureMenu& background, Menu::Buttons& buttons, bool& isPlaying, bool& initiated);
+	void Init(Menu::Buttons& buttons, Menu::textureMenu& background, bool& initiated);
 }

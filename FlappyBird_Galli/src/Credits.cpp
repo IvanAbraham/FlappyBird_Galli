@@ -3,16 +3,25 @@
 namespace Credits
 {
 
-	void Init(textureCredits& background)
+	void Init(textureCredits& background, bool& initiated)
 	{
-		
-		background.texture = LoadTexture("res/Textures/Credits/Credits1.png");
-		background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
-		background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
-		background.origin = { 0, 0 };
+		if(!initiated)
+		{
+			background.texture = LoadTexture("res/Textures/Credits/Credits1.png");
+			background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
+			background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
+			background.origin = { 0, 0 };
+		}
 	}
 
-	int Update(program::Screens& actualScreen, Credits::textureCredits& background, program::Button backButton)
+	void UnloadTextures(textureCredits& background)
+	{
+
+		UnloadTexture(background.texture);
+
+	}
+
+	int Update(program::Screens& actualScreen, Credits::textureCredits& background, program::Button backButton, bool& initiated)
 	{
 
 		if (col::pointToRect(GetMousePosition(),backButton.position,backButton.size))
@@ -20,6 +29,8 @@ namespace Credits
 			backButton.isHovering = true;
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				UnloadTextures(background);
+				initiated = false;
 				actualScreen = program::Screens::Menu;
 			}
 		}

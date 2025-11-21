@@ -31,37 +31,39 @@ namespace program
         backButton.hovTexture = LoadTexture("res/Textures/Buttons/BackSelec.png");
 
         bool isPlaying = true;
-
-        Menu::Init(menuButtons, menuTexture);
-        Credits::Init(creditsTexture);
-        Tutorial::Init(tutorialTexture);
+        bool isInitiated = false;
 
         while (!WindowShouldClose() && isPlaying)
         {
+
+            SetExitKey(NULL);
+
             switch (actualScreen)
             {
             case program::Screens::Menu:
+
+                Menu::Init(menuButtons, menuTexture, isInitiated);
                 
-                Menu::Update(actualScreen, menuTexture, menuButtons, isPlaying);
+                Menu::Update(actualScreen, menuTexture, menuButtons, isPlaying, isInitiated);
                 
                 break;
             
             case program::Screens::Game:
                
                 Game::Update(actualScreen);
+
                 break;
             
             case program::Screens::Tutorial:
             
-                SetExitKey(KEY_NULL);
-                Tutorial::Update(actualScreen, backButton, tutorialTexture);
+                Tutorial::Init(tutorialTexture, isInitiated);
+                Tutorial::Update(actualScreen, backButton, tutorialTexture, isInitiated);
                 
                 break;
             
             case program::Screens::Credits:
-            
-                SetExitKey(KEY_NULL);
-                Credits::Update(actualScreen, creditsTexture, backButton);
+                Credits::Init(creditsTexture, isInitiated);
+                Credits::Update(actualScreen, creditsTexture, backButton, isInitiated);
                 
                 break;
             

@@ -3,17 +3,29 @@
 namespace Tutorial
 {
 
-	void Init(Tutorial::textureTutorial& background)
+	void Init(Tutorial::textureTutorial& background, bool& initiated)
 	{
 
-		background.texture = LoadTexture("res/Textures/Tutorial/Tutorial1.png");
-		background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
-		background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
-		background.origin = { 0, 0 };
+		if (!initiated)
+		{
+			background.texture = LoadTexture("res/Textures/Tutorial/Tutorial1.png");
+			background.source = { 0, 0, static_cast<float>(background.texture.width), static_cast<float>(background.texture.height) };
+			background.dest = { 0, 0, static_cast<float>(program::screenWidth), static_cast<float>(program::screenHeight) };
+			background.origin = { 0, 0 };
+
+			initiated = true;
+		}
 
 	}
 
-	void Update(program::Screens& currentScreen, program::Button& backButton, Tutorial::textureTutorial& background)
+	void UnloadTextures(Tutorial::textureTutorial& background)
+	{
+
+		UnloadTexture(background.texture);
+
+	}
+
+	void Update(program::Screens& currentScreen, program::Button& backButton, Tutorial::textureTutorial& background, bool& initiated)
 	{
 
 		if (IsKeyPressed(KEY_ESCAPE))
@@ -24,6 +36,7 @@ namespace Tutorial
 			backButton.isHovering = true;
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				initiated = false;
 				currentScreen = program::Screens::Menu;
 			}
 		}

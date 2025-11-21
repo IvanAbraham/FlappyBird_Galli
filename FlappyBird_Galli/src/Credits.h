@@ -13,7 +13,6 @@ namespace Credits
 		Vector2 origin;
 	};
 
-	int Update(program::Screens& actualScreen, textureCredits& background, program::Button backButton);
-
-	void Init(textureCredits& background);
+	int Update(program::Screens& actualScreen, Credits::textureCredits& background, program::Button backButton, bool& initiated);
+	void Init(textureCredits& background, bool& initiated);
 }
